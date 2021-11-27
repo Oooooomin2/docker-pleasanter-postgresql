@@ -3,18 +3,16 @@ RUN apt update \
     && apt install -y \
     wget \
     unzip
-ADD ./resolv.conf /etc
+COPY ./resolv.conf /etc
 
 EXPOSE 5000
 ENV ASPNETCORE_URLS http://*:5000
 
 RUN mkdir /web
 WORKDIR /web
-ADD ./startup.sh .
 RUN wget https://github.com/Implem/Implem.Pleasanter.NetCore/releases/download/Pleasante_1.2.18.0/Pleasanter_1.2.18.0.zip \
-    && unzip Pleasanter_1.2.18.0.zip \
-    && chmod 744 /web/startup.sh
-WORKDIR /web/pleasanter/Implem.Pleasanter/App_Data/Parameters
-ADD ./Rds.json .
-WORKDIR /web
+    && unzip Pleasanter_1.2.18.0.zip
+COPY ./startup.sh /web
+RUN chmod 744 /web/startup.sh
+COPY ./Rds.json /web/pleasanter/Implem.Pleasanter/App_Data/Parameters
 ENTRYPOINT ["bash","startup.sh"]
