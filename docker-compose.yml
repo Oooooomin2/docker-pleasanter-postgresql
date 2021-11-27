@@ -1,0 +1,26 @@
+version: '3.5'
+services:
+    db:
+        image: omin1994/customdb-for-pleasanter:1.2
+        restart: always
+        ports:
+            - "5432:5432"
+        container_name: pleasanter-db
+        networks:
+            - default
+    web:
+        build:
+            context: "./web"
+            dockerfile: "Dockerfile"
+        container_name: pleasanter-app
+        ports:
+            - "5000:5000"
+        tty: true
+        privileged: true
+        depends_on:
+          - db
+        networks:
+            - default
+networks:
+    default: 
+        name: pleasanterNetwork
