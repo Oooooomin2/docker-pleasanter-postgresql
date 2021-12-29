@@ -10,8 +10,8 @@ ENV ASPNETCORE_URLS http://*:5000
 
 RUN mkdir /web
 WORKDIR /web
-RUN wget https://github.com/Implem/Implem.Pleasanter.NetCore/releases/download/Pleasanter_1.2.22.1/Pleasanter_1.2.22.1.zip \
-    && unzip Pleasanter_1.2.22.1.zip
+RUN wget https://github.com/Implem/Implem.Pleasanter.NetCore/releases/download/Pleasanter_1.2.23.0/Pleasanter_1.2.23.0.zip \
+    && unzip Pleasanter_1.2.23.0.zip
 COPY ./startup.sh /web
 RUN chmod 744 /web/startup.sh
 COPY ./Rds.json /web/pleasanter/Implem.Pleasanter/App_Data/Parameters

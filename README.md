@@ -2,7 +2,7 @@
 Docker上でプリザンター + PostgreSQLの仕組みを構成します。**あくまでデモ用**ですので、実際に運用する際は色々と課題があります...。  
 バージョンは以下です。
 
-* Pleasanter 1.2.22.1(webフォルダのDockerfileを修正することで任意のバージョンが取得可能です)
+* Pleasanter 1.2.23.0(webフォルダのDockerfileを修正することで任意のバージョンが取得可能です)
 * PostgreSQL 13
 * Docker 20.10.8
 * docker-compose 1.29.2
